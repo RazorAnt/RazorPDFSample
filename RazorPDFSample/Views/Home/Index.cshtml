@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about RazorPDF visit: <a href="http://nyveldt.com/blog/page/razorpdf" title="RazorPDF">http://nyveldt.com/blog/page/razorpdf</a>.
+</p>
+<ul>
+    <li>@Html.ActionLink("Simple PDF", "Pdf", "Home")</li>
+    <li>@Html.ActionLink("Typical PDF with a Model, ViewBag, etc", "PDFModel", new { id = "yoda" })</li>
+    <li>@Html.ActionLink("Same PDF but different", "PDFTake3", new { id = "anakin" })</li>
+</ul>

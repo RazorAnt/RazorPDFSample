@@ -1,0 +1,26 @@
+﻿@model RazorPDFSample.Models.Person
+@{
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+}
+<paragraph style="font-family:Helvetica;font-size:18;font-style:italic;">
+	<chunk style="font-weight:bold;">@ViewBag.Title</chunk>
+</paragraph>
+<table width="100%" cellpadding="0.5" cellspacing="0.5" widths="30;60" borderwidth="1.0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
+    <row>
+        <cell>
+            <chunk style="font-weight:bold;">UserName:</chunk>
+        </cell>
+        <cell>
+            <chunk style="">@Model.UserName</chunk>
+        </cell>
+    </row>
+    <row>
+        <cell>
+            <chunk style="font-weight:bold;">Lucky Number:</chunk>
+        </cell>
+        <cell>
+            <chunk style="">@Model.LuckyNumber.ToString()</chunk>
+        </cell>
+    </row>
+</table>
+
