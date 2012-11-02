@@ -19,6 +19,11 @@ namespace RazorPDFSample.Controllers
 
         public ActionResult About()
         {
+            if (Request.QueryString["format"] == "pdf")
+            {
+                return new PdfResult(null, "About");
+            }
+
             return View();
         }
 
@@ -53,6 +58,33 @@ namespace RazorPDFSample.Controllers
             var person = new Person() { UserName = id, LuckyNumber = 17 };
 
             return new PdfResult(person, "PdfModel");
+        }
+
+        public ActionResult HtmlReport()
+        {
+            // Setup sample model
+            var list = new List<Person>();
+            for (int i = 1; i < 10; i++)
+                list.Add(new Person() { UserName = "Person " + i, LuckyNumber = i });
+
+            // Output to Pdf?
+            if (Request.QueryString["format"] == "pdf")
+                return new PdfResult(list, "HtmlReport");
+
+            return View(list);
+        }
+
+        public ActionResult ReportSample()
+        {
+            var list = new List<Person>();
+
+            for (int i = 1; i < 10; i++)
+                list.Add(new Person() { UserName = "Person " + i.ToString(), LuckyNumber = i });
+
+            var pdf = new PdfResult(list, "ReportSample");
+            pdf.ViewBag.Title = "Report Title";
+
+            return pdf;
         }
     }
 }

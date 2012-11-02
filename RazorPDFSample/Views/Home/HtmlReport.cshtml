@@ -1,0 +1,31 @@
+﻿@model List<RazorPDFSample.Models.Person>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h2>Html Report</h2>
+    <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse diam orci, lobortis non hendrerit rutrum, volutpat a mi. Cras ac odio at sapien pretium imperdiet id ut erat. Proin id enim est, ac porta turpis. Pellentesque quis diam quam. Nullam ac lorem lorem, vel porta libero. Nunc fringilla volutpat mauris, at scelerisque tellus rhoncus vitae. Sed nec libero leo, et laoreet dui. Aliquam tempus justo non augue ultrices posuere. Sed congue, diam vel scelerisque porttitor, tortor arcu accumsan tortor, quis semper nibh magna nec turpis. Donec euismod nunc et justo pellentesque nec pellentesque lacus tristique. Proin facilisis dolor sit amet enim accumsan at dictum dui pulvinar. Morbi orci metus, elementum quis consequat a, facilisis vel diam.
+    </p>
+
+    <table width="100%">
+        <tr>
+            <td>User Name</td>
+            <td>Description</td>
+            <td>Lucky Number</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>Description</td>
+                <td>@item.LuckyNumber</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

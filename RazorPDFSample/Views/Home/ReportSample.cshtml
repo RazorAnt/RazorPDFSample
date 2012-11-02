@@ -1,0 +1,63 @@
+﻿@model List<RazorPDFSample.Models.Person>
+@{
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+}
+
+<paragraph style="font-family:Helvetica;font-size:18;font-style:italic;">
+	<chunk red="255" green="0" blue="0">@ViewBag.Title</chunk>
+</paragraph>
+<paragraph>
+    <chunk style="font-family:Times;font-weight:bold;">Report Date: </chunk>
+    <chunk style="font-family:Times;">@DateTime.Now.ToString("MM/dd/yyyy")</chunk>
+</paragraph>
+<paragraph>
+    <chunk style="font-family:Times;font-weight:bold;">Report Time: </chunk>
+    <chunk style="font-family:Times;">@DateTime.Now.ToString("hh:mm tt")</chunk>
+</paragraph>
+
+<table width="100%" cellpadding="1.0" cellspacing="1.0"  widths="3;8;4;4">
+    <row>
+	    <cell borderwidth="0.5" left="false" right="false" top="false" bottom="true">User Name</cell>
+	    <cell borderwidth="0.5" left="false" right="false" top="false" bottom="true">Description</cell>
+	    <cell borderwidth="0.5" left="false" right="false" top="false" bottom="true" horizontalalign="right">Lucky Number</cell>
+	    <cell borderwidth="0.5" left="false" right="false" top="false" bottom="true" horizontalalign="right">Doubled</cell>
+    </row>
+    @foreach (var item in Model)
+    {
+    <row>
+	    <cell>@item.UserName</cell>
+	    <cell><chunk style="font-size:8;">Small description for @item.UserName</chunk></cell>
+	    <cell horizontalalign="right">@item.LuckyNumber</cell>
+	    <cell horizontalalign="right">@(item.LuckyNumber * 2)</cell>
+    </row>
+    }
+    <row>
+	    <cell borderwidth="0.5" left="false" right="false" top="true" bottom="false"  />
+	    <cell borderwidth="0.5" left="false" right="false" top="true" bottom="false" colspan="2">Count</cell>
+	    <cell borderwidth="0.5" left="false" right="false" top="true" bottom="false" horizontalalign="right">@Model.Count.ToString()</cell>
+    </row>
+</table>
+<newline />
+<paragraph leading="14.0" font="unknown" align="Default">
+    You can also add images.
+</paragraph>
+
+<image url="@Context.Server.MapPath("~/Content/sample.png")"/>
+
+<paragraph leading="14.0" font="unknown" align="Default">
+    and do lists.
+</paragraph>
+
+<newline />
+
+<list numbered="true" symbolindent="15" font="unknown">
+    <listitem leading="18.0" font="Times" size="12.0" align="Default" indentationleft="15.0">
+        <chunk font="Times" size="12.0">First item</chunk>
+    </listitem>
+    <listitem leading="18.0" font="Times" size="12.0" align="Default" indentationleft="15.0">
+        <chunk font="Times" size="12.0">Second item</chunk>
+    </listitem>
+    <listitem leading="18.0" font="Times" size="12.0" align="Default" indentationleft="15.0">
+        <chunk font="Times" size="12.0">Last item</chunk>
+    </listitem>
+</list>
